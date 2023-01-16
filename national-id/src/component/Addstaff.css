@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: white;
+}
+
+.wrapper3 {
+    max-width: 500px;
+    min-height: 500px;
+    margin: 80px auto;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 13px 13px 20px rgb(90, 88, 88), -13px -13px 20px #fff;
+}
+
+
+.wrapper3 .row{
+    background-color: #0a81ff;
+    text-align: center;
+    font-size: 3rem;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+   
+}
+.wrapper3 .form-field input {
+    margin-top: 1rem;
+    width: 100%;
+    display: block;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.2rem;
+    color:black;
+    padding: 10px 15px 10px 10px;
+   
+}
+
+.wrapper3 .form-field {
+    margin-top: 4rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
+}
+.wrapper3 .btn {
+    box-shadow: none;
+    margin-left: 8rem;
+    margin-top: 4rem;
+    width: 50%;
+    height: 40px;
+    background-color: #0a81ff;
+    color: #fff;
+    border-radius: 25px;
+    box-shadow: 3px 3px 3px #b1b1b1,
+        -3px -3px 3px #fff;
+    letter-spacing: 1.3px;
+}
+.wrapper3 .fw{
+    margin-left: 11rem;
+    margin-top: 1rem;
+}
