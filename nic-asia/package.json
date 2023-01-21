@@ -17,11 +17,12 @@
     "react-qr-code": "^2.0.11",
     "react-router-dom": "^6.6.2",
     "react-scripts": "5.0.1",
+    "react-use-websocket": "^4.2.0",
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3004 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

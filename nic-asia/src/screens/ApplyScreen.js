@@ -1,8 +1,9 @@
 import React from "react";
-import "./Qr.css";
-import {Link} from "react-router-dom"
+import "./ApplyScreen.css";
+import { Link } from "react-router-dom"
+// import w3cwebsocket from 'websocket';
+export default function ApplyScreen() {
 
-export default function Qr() {
   return (
     <>
       <div className="wrapper">
@@ -21,7 +22,7 @@ export default function Qr() {
             </div>
           </center>
           <Link to="scan">
-          <button className="btn">Apply with Parichaya</button>
+            <button className="btn">Apply with Parichaya</button>
           </Link>
         </form>
       </div>

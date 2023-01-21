@@ -1,9 +1,10 @@
 import React from "react";
 import "./Login.css";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 export default function Login() {
   return (
     <>
+
       <div className="wrapper">
         <div className="row">Welcome Back!</div>
         <div className="box">Login</div>
@@ -27,8 +28,8 @@ export default function Login() {
             />
           </div>
           <Link to="register">
-          <button className="btn">Login
-          </button>
+            <button className="btn">Login
+            </button>
           </Link>
         </form>
         <div className="fw">
