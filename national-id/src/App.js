@@ -11,10 +11,10 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<AddNID />} />
-          <Route exact path="/login" element={<Login />} />
+          {/* <Route exact path="/" element={<AddNID />} /> */}
+          <Route exact path="/" element={<Login />} />
           <Route exact path="register" element={<Register />} />
-          <Route exact path="register/form" element={<Form />} />
+          <Route exact path="register/addNid" element={<AddNID />} />
           <Route exact path="register/addstaff" element={<Addstaff />} />
         </Routes>
       </BrowserRouter>
