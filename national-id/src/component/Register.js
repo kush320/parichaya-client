@@ -16,7 +16,7 @@ export default function Register() {
                 alt="govlogo"
               />
               <center>
-                <Link to="form">
+                <Link to="addNid">
                   <p>Click here to Register</p>
                 </Link>
               </center>

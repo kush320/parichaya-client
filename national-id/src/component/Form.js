@@ -8,7 +8,7 @@ export default function Form() {
         <div className="main">Aplicantion form for National Identity Card</div>
         <form>
           <center>
-            <h2 style={{ marginTop: "1rem" }}>Main Applicant Data</h2>
+            <h2 style={{ marginTop: "1rem" }}>Main Applicant Test Data</h2>
           </center>
           <div className="grid-container">
             <div class="grid-item">
