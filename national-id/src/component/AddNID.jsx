@@ -15,12 +15,22 @@ import {
 import { Grid } from "@chakra-ui/react";
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 
 // import axios from "axios";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useRef } from "react";
 
 export default function AddNID() {
+
+  const navigate = useNavigate("")
+
+  useEffect(() => {
+    if(!localStorage.getItem("token")){
+      navigate("/")
+    }
+  },[])
+  
   const defaultSrc =
     "https://www.pngkit.com/png/full/301-3012694_account-user-profile-avatar-comments-fa-user-circle.png";
 
