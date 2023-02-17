@@ -1,12 +1,12 @@
 import React from "react";
 import { Grid, GridItem, Box,  } from "@chakra-ui/react";
 import { Tabs, TabList, Tab} from "@chakra-ui/react";
-import { PhoneIcon, AddIcon, SearchIcon } from '@chakra-ui/icons'
+import { PlusSquareIcon, SearchIcon } from '@chakra-ui/icons'
 // import { IconButton } from '@chakra-ui/react'
 
 import "./Register.css";
-import { useEffect} from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState} from "react";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 // import {  PlusSquareIcon, SearchIcon } from '@chakra-ui/icons'
 
 export default function Register() {
@@ -17,16 +17,15 @@ export default function Register() {
       navigate("/");
     }
   }, []);
-  // const [selectedOption, setSelectedOption] = useState("");
 
-  // const handleOptionChange = (e) => {
-  //   setSelectedOption(e.target.value);
-  // }
+ 
 
   return (
     <>
       
       <div className="wrapper1">
+     
+        
         
         <Grid className="row" templateColumns="repeat(5, 1fr)" gap={4}>
           <GridItem
@@ -45,8 +44,9 @@ export default function Register() {
                   <GridItem marginTop={20} marginLeft={20} >
                 {/* <div className="nan"> */}
                   <Tab  _selected={{ color: "blue", bg: "white" }}>
-                  <SearchIcon/>
-                    <p>Search National Identity</p>
+                    <Link to="search">
+                    <p><SearchIcon marginRight={2}/>Search National Identity</p>
+                    </Link>
                   </Tab>
                   </GridItem>
                 {/* </div> */}
@@ -56,7 +56,7 @@ export default function Register() {
                 <GridItem marginLeft={20}>
                   <Tab _selected={{ color: "blue", bg: "white" }}>
                     <Link to="addNid">
-                      <p>Register National Identity</p>
+                      <p> <PlusSquareIcon marginRight={2}/>Register National Identity</p>
                     </Link>
                   </Tab>
                   </GridItem>
@@ -82,7 +82,9 @@ export default function Register() {
               </Box>
             </div>
           </GridItem>
+          {/* <GridItem colStart={4} colEnd={6} h='10' bg='papayawhip' /> */}
         </Grid>
+        
       </div>
     </>
   );
