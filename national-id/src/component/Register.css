@@ -13,43 +13,64 @@ body {
 
 .wrapper1 {
     max-width: 1200px;
-    min-height: 600px;
+    min-height: 100%;
     margin: 20px auto;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 5px;
     box-shadow: 13px 13px 20px rgb(90, 88, 88), -13px -13px 20px #fff;
 }
 
-
-.wrapper1 .reg{
-    background-color: #0a81ff;
+.wrapper1 .row .column .rem{
+   
+    margin-top: 2rem;
+    
     text-align: center;
     font-size: 3rem;
+  
+    
     color: white;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-   
-}
-.wrapper1 .card{
-    max-width: 300px;
-    max-height: 350px;
-    margin-top: 30px;
-    margin-left: 50px;
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: 13px 13px 20px rgb(90, 88, 88), -13px -13px 20px #fff;
-    
     
    
 }
-.wrapper1 .card .card-image-center{
-    height: 300px;
-    width: 300px;
-}
-.wrapper1 .row .column {
-    margin-left: 8rem;
-    float: left;
-    width: 100;
-    padding: 70px 10px 10px 10px;
+/* .wrapper1 .row .column .reg{
+   
+    margin-top: 2rem;
+    margin-left: 3rem;
+   
+    
+    text-align: center;
+    font-size: 1rem;
+  
+    
+    color: white;
+    
+   
+} */
+
+/* .wrapper1 .row .column .nan{
+   
+    margin-top: 3rem;
+    margin-left: 3rem; 
+    
+     text-align: center;
+    font-size: 1rem; 
+  
+    
+    color: white;
+    
+   
+} */
+.wrapper1 .row .column .log{
+   
+    margin-top: 99%;
+    margin-bottom: 1%;
+    margin-left: 10rem;
+    
+    font-size: 1rem;
+  
+    
+    color: white;
+    
+   
 }
 

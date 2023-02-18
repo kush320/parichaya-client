@@ -13,36 +13,37 @@ body {
 
 .wrapper {
     max-width: 500px;
-    min-height: 500px;
+    min-height: 550px;
     margin: 80px auto;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 5px;
     box-shadow: 13px 13px 20px rgb(90, 88, 88), -13px -13px 20px #fff;
 }
 
-
-.wrapper .row{
-    background-color: #0a81ff;
+.wrapper .kush{ 
+  
     text-align: center;
+    /* background-color: blue; */
+    /* margin-top: 4rem; */
     font-size: 3rem;
-    color: white;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-   
+    color: #0A81FF;
+    /* position: relative; */
+   margin-bottom: 2rem;
+    /* top: 0rem; */
+    
+    
 }
-.wrapper .box{
-    background-color: #0a81ff;
-    text-align: center;
-    font-size: 2rem;
-    color: white;
-   
+.wrapper div{
+    position: relative;
+    top: 5rem;
 }
 
 .wrapper .form-field input {
-    margin-top: 1rem;
+    margin-top: 0rem;
     width: 100%;
     display: block;
     border: none;
+    
     outline: none;
     background: none;
     font-size: 1.2rem;
@@ -50,29 +51,39 @@ body {
     padding: 10px 15px 10px 10px;
    
 }
+.wrapper .name {
+margin-left: 4rem;
+
+}
 
 .wrapper .form-field {
-    margin-top: 2rem;
+    margin-top: 0rem;
     margin-left: 4rem;
     margin-right: 4rem;
+    height: 45px;
+    border: 1px solid #0A81FF;
+   
     margin-bottom: 20px;
-    border-radius: 15px;
-    box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
+    border-radius: 5px;
+    /* box-shadow: blue; */
+    /* box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff; */
 }
 .wrapper .btn {
     box-shadow: none;
-    margin-left: 8rem;
-    margin-top: 2rem;
-    width: 50%;
-    height: 40px;
+    margin-left: 4rem;
+    margin-top: 7rem;
+    width: 75%;
+    height: 45px;
     background-color: #0a81ff;
     color: #fff;
-    border-radius: 25px;
-    box-shadow: 3px 3px 3px #b1b1b1,
-        -3px -3px 3px #fff;
+    border-radius: 5px;
+    /* box-shadow: 3px 3px 3px #b1b1b1,
+        -3px -3px 3px #fff; */
     letter-spacing: 1.3px;
 }
 .wrapper .fw{
-    margin-left: 11rem;
+    margin-left: 12rem;
     margin-top: 1rem;
+   
+   
 }
