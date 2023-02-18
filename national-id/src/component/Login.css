@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -17,23 +17,24 @@ body {
     margin: 80px auto;
     background-color: white;
     border-radius: 5px;
-    box-shadow: 13px 13px 20px rgb(90, 88, 88), -13px -13px 20px #fff;
+    box-shadow: 1px 1px 4px rgb(90, 88, 88), -13px -13px 20px #fff;
 }
 
-.wrapper .kush{ 
-  
+.kush {
+
     text-align: center;
     /* background-color: blue; */
     /* margin-top: 4rem; */
     font-size: 3rem;
     color: #0A81FF;
     /* position: relative; */
-   margin-bottom: 2rem;
+    margin-bottom: 2rem;
     /* top: 0rem; */
-    
-    
+
+
 }
-.wrapper div{
+
+.wrapper div {
     position: relative;
     top: 5rem;
 }
@@ -43,16 +44,17 @@ body {
     width: 100%;
     display: block;
     border: none;
-    
+
     outline: none;
     background: none;
     font-size: 1.2rem;
-    color:black;
+    color: black;
     padding: 10px 15px 10px 10px;
-   
+
 }
+
 .wrapper .name {
-margin-left: 4rem;
+    margin-left: 4rem;
 
 }
 
@@ -62,12 +64,13 @@ margin-left: 4rem;
     margin-right: 4rem;
     height: 45px;
     border: 1px solid #0A81FF;
-   
+
     margin-bottom: 20px;
     border-radius: 5px;
     /* box-shadow: blue; */
     /* box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff; */
 }
+
 .wrapper .btn {
     box-shadow: none;
     margin-left: 4rem;
@@ -81,9 +84,8 @@ margin-left: 4rem;
         -3px -3px 3px #fff; */
     letter-spacing: 1.3px;
 }
-.wrapper .fw{
+
+.wrapper .fw {
     margin-left: 12rem;
     margin-top: 1rem;
-   
-   
 }
