@@ -25,14 +25,20 @@ import axios from "axios";
 
 import { Grid, GridItem } from "@chakra-ui/react";
 import { Button, ButtonGroup } from "@chakra-ui/react";
+import { useToast } from '@chakra-ui/react'
+
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 
 // import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useRef } from "react";
+import AuthContext from "../store/auth-context";
 
 export default function RegisterCTZ() {
+    const authContext = useContext(AuthContext);
+    const toast = useToast()
+
 
     const navigate = useNavigate("");
     const [isLoading, setIsLoading] = useState(false);
@@ -43,13 +49,12 @@ export default function RegisterCTZ() {
     //     }
     //   }, []);
 
-    const defaultSrc =
-        "https://www.pngkit.com/png/full/301-3012694_account-user-profile-avatar-comments-fa-user-circle.png";
 
     const {
         register,
         handleSubmit,
         watch,
+        reset,
         formState: { errors },
     } = useForm();
 
@@ -63,6 +68,7 @@ export default function RegisterCTZ() {
         const modifiedData = data;
         modifiedData.face_image = imageData;
 
+
         try {
             const response = await axios.post(
                 "http://65.109.161.97:3000/nid/",
@@ -73,23 +79,40 @@ export default function RegisterCTZ() {
                 {
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzaW1uZXBhbCIsImlkIjoiNjNjMmQ0YjhlODlhOTU3MGFkMDMxZWU4IiwiaWF0IjoxNjczNzEyODI1fQ.ttXWpdGdJovelBMLWhbNnNRUE8vrXVZlBNL1_bV7bHk"
+                        'Authorization': `Bearer ${authContext.token}`
                     }
                 }
             );
+            reset();
+            setSelectedImage();
+            setImageData();
+            imageUploadField.current.value = "";
+            setIsLoading(false)
+            toast({
+                title: 'Registration Successful.',
+                description: `National Identity Card with NIN: ${modifiedData.NIN} created.`,
+                status: 'success',
+                duration: 5000,
+                isClosable: true
+            });
             console.log(response.data)
 
-            setIsLoading(false)
+
         } catch (error) {
             console.log(error)
             setSubmissionError("Failed to register.");
+            toast({
+                title: 'Registration Failed.',
+                description: `Failed to register the National Identity Card.`,
+                status: 'error',
+                duration: 5000,
+                isClosable: true
+            });
             setIsLoading(false)
         }
 
 
 
-        // setFormData(JSON.stringify(modifiedData));
-        // console.log(modifiedData);
         setIsLoading(false);
     }
 
@@ -163,9 +186,10 @@ export default function RegisterCTZ() {
                                                     const allowedFileTypes = ["jpg", "png"];
                                                     if (!allowedFileTypes.includes(fileExtension)) {
                                                         alert(
-                                                            `Image does not support. Image must be in ${allowedFileTypes.join(
+                                                            `Image does not support.Image must be in ${allowedFileTypes.join(
                                                                 " or "
-                                                            )}`
+                                                            )
+                                                            }`
                                                         );
                                                         event.target.value = "";
                                                         setSelectedImage();
@@ -184,8 +208,8 @@ export default function RegisterCTZ() {
                                                     let reader = new FileReader();
                                                     reader.readAsDataURL(selectedImage);
                                                     reader.onload = function () {
-                                                        setImageData(reader.result);
-                                                        console.log(reader.result);
+                                                        setImageData(reader.result.split(",")[1]);
+                                                        console.log(reader.result.split(',')[1]);
                                                         setSelectedImage(selectedImage);
                                                     };
                                                     console.log(selectedImage);

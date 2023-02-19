@@ -35,6 +35,8 @@ import {
 import emblem from '../assets/emblem.png';
 
 import { NavLink, useLocation } from 'react-router-dom';
+import { useContext } from 'react';
+import AuthContext from '../store/auth-context';
 const LinkItems = [
     { name: 'Home', icon: FiHome, route: '/' },
     { name: 'National ID', icon: FiPlusCircle, route: '/nid/register' },
@@ -45,6 +47,7 @@ const LinkItems = [
 export default function SidebarWithHeader({
     children,
 }) {
+    const authContext = useContext(AuthContext)
     const { isOpen, onOpen, onClose } = useDisclosure();
     return (
         <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
@@ -65,7 +68,7 @@ export default function SidebarWithHeader({
                 </DrawerContent>
             </Drawer>
             {/* mobilenav */}
-            <MobileNav onOpen={onOpen} />
+            <MobileNav onOpen={onOpen} onLogout={authContext.onLogout} />
             <Box ml={{ base: 0, md: 60 }} p="4" >
                 {children}
             </Box>
@@ -161,7 +164,7 @@ const NavItem = ({ icon, route, children, ...rest }) => {
 };
 
 
-const MobileNav = ({ onOpen, ...rest }) => {
+const MobileNav = ({ onOpen, onLogout, ...rest }) => {
     return (
         <Flex
             ml={{ base: 0, md: 60 }}
@@ -198,11 +201,8 @@ const MobileNav = ({ onOpen, ...rest }) => {
                             transition="all 0.3s"
                             _focus={{ boxShadow: 'none' }}>
                             <HStack>
-                                <IconButton
-                                    size="lg"
-                                    variant="ghost"
-                                    aria-label="open menu"
-                                    icon={<FiUser />}
+                                <Icon
+                                    as={FiUser}
                                 />
 
                                 <VStack
@@ -228,8 +228,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                             {/* <MenuItem>Billing</MenuItem> */}
                             {/* <MenuDivider /> */}
                             <MenuItem onClick={() => {
-                                localStorage.removeItem("token");
-                                window.location.reload()
+                                onLogout()
                             }}>Log out</MenuItem>
                         </MenuList>
                     </Menu>

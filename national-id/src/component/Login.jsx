@@ -1,5 +1,4 @@
 import { useState } from "react";
-import PropTypes from 'prop-types';
 
 import axios from "axios";
 import { Button, FormControl, FormLabel, Input, Container, Card, CardBody, Heading, Text, Center, Box } from "@chakra-ui/react";
@@ -7,12 +6,13 @@ import { Button, FormControl, FormLabel, Input, Container, Card, CardBody, Headi
 import emblem from '../assets/emblem.png';
 import "./Login.css";
 
-export default function Login({ setToken }) {
-  // const navigate = useNavigate("");
+export default function Login({ onLogin }) {
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  console.log('rendering login form func')
 
 
 
@@ -30,7 +30,8 @@ export default function Login({ setToken }) {
         }
       );
 
-      setToken(response.data.token)
+      // setToken(response.data.token)
+      onLogin(response.data.token)
       setIsLoading(false)
     } catch (error) {
       console.log(error)
@@ -41,6 +42,8 @@ export default function Login({ setToken }) {
 
   return (
     <>
+      {console.log('rendering login body')
+      }
       <Container p={10} pt={20}>
 
         <Center display='flex' flexWrap={'wrap'}>
@@ -92,6 +95,3 @@ export default function Login({ setToken }) {
 }
 
 
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired
-}

@@ -4,19 +4,18 @@ import Dashboard from "./component/Dashboard";
 import SidebarWithHeader from "./component/SideNav";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RegisterNID from "./component/RegisterNID";
-import useToken from "./hooks/useToken";
 import RegisterCTZ from "./component/RegisterCTZ";
 import RegisterDVL from "./component/RegisterDVL";
+import { useContext, useEffect } from "react";
+import AuthContext from "./store/auth-context";
 
 
 function App() {
-  const { token, setToken } = useToken();
-  console.log(token)
-  if (!token) {
+  const authContext = useContext(AuthContext)
 
-    return <Login setToken={setToken} />
+  if (!authContext.isLoggedIn) {
+    return <Login onLogin={authContext.onLogin} />
   }
-
   return (
     <>
 
