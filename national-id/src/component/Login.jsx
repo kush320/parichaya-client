@@ -12,7 +12,6 @@ export default function Login({ onLogin }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  console.log('rendering login form func')
 
 
 
@@ -42,8 +41,6 @@ export default function Login({ onLogin }) {
 
   return (
     <>
-      {console.log('rendering login body')
-      }
       <Container p={10} pt={20}>
 
         <Center display='flex' flexWrap={'wrap'}>
