@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+/* @font-face {
+  font-family: "RobotoRegular";
+  src: local("RobotoRegular"),
+    url("./assets/fonts/Roboto-Regular.ttf") format("truetype");
+
+} */
+
+/* @font-face {
+  font-family: "RobotoBold";
+  src: local("RobotoBold"),
+    url("./assets/fonts/Roboto-Bold.ttf") format("truetype");
+
+} */
