@@ -60,7 +60,7 @@ export default function Login({ onLogin }) {
 
               <FormControl pb={5}>
                 <FormLabel>Username</FormLabel>
-                <Input type='text' id="username" value={username} onChange={(event) => setUsername(event.target.value)} />
+                <Input type='text' id="username" required value={username} onChange={(event) => setUsername(event.target.value)} />
               </FormControl>
               <FormControl pb={5}>
                 <FormLabel>Passwword</FormLabel>
