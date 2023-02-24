@@ -1,6 +1,7 @@
 import { useState, useContext, useRef } from "react";
+
+import axios from "axios";
 import {
-  Container,
   FormLabel,
   FormControl,
   Input,
@@ -12,40 +13,26 @@ import {
   NumberDecrementStepper,
   Box,
   InputGroup,
-  InputLeftAddon,
   Card,
   CardBody,
-  CardHeader,
   Heading,
   Text,
   Stack,
   StackDivider,
-  Divider,
+  Button,
+  Grid,
+  GridItem,
+  useToast,
 } from "@chakra-ui/react";
-import axios from "axios";
-
-import { Grid, GridItem } from "@chakra-ui/react";
-import { Button, ButtonGroup } from "@chakra-ui/react";
-import { useToast } from "@chakra-ui/react";
-
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
 
-// import axios from "axios";
 import AuthContext from "../store/auth-context";
 
-export default function RegisterNID() {
+export default function EditNID({ nin, initialData }) {
   const authContext = useContext(AuthContext);
   const toast = useToast();
 
-  const navigate = useNavigate("");
   const [isLoading, setIsLoading] = useState(false);
-  const [submissionError, setSubmissionError] = useState();
-  //   useEffect(() => {
-  //     if (!localStorage.getItem("token")) {
-  //       navigate("/");
-  //     }
-  //   }, []);
 
   const {
     register,
@@ -53,22 +40,23 @@ export default function RegisterNID() {
     watch,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: initialData
+  });
 
   const imageUploadField = useRef();
-  const [selectedImage, setSelectedImage] = useState();
-  const [imageData, setImageData] = useState();
+  const [imageData, setImageData] = useState(initialData.face_image);
 
-  async function onSubmit(data) {
+  const onUpdate = async (data) => {
     setIsLoading(true);
     const modifiedData = data;
     modifiedData.face_image = imageData;
 
     try {
-      const response = await axios.post(
-        "http://65.109.161.97:3000/nid/",
+      const response = await axios.put(
+        `http://65.109.161.97:3000/nid/${nin}`,
         {
-          NIN: modifiedData.NIN,
+          NIN: nin,
           documentDetails: modifiedData,
         },
         {
@@ -78,14 +66,13 @@ export default function RegisterNID() {
           },
         }
       );
-      reset();
-      setSelectedImage();
-      setImageData();
+      // reset();
+      // setImageData();
       imageUploadField.current.value = "";
       setIsLoading(false);
       toast({
-        title: "Registration Successful.",
-        description: `National Identity Card with NIN: ${modifiedData.NIN} created.`,
+        title: "Update Successful.",
+        description: `National Identity Card Updated.`,
         status: "success",
         duration: 5000,
         isClosable: true,
@@ -93,10 +80,9 @@ export default function RegisterNID() {
       console.log(response.data);
     } catch (error) {
       console.log(error);
-      setSubmissionError("Failed to register.");
       toast({
-        title: "Registration Failed.",
-        description: `Failed to register the National Identity Card.`,
+        title: "Update Failed.",
+        description: `Failed to update the National Identity Card.`,
         status: "error",
         duration: 5000,
         isClosable: true,
@@ -108,49 +94,31 @@ export default function RegisterNID() {
   }
 
   return (
-    <Box>
-      <Box px={{ base: 10, lg: 32 }} my={10}>
-        <Heading size="lg">National Identity Card Registration</Heading>
-      </Box>
+    <Box pt={10}>
       <Card mx={{ base: 10, lg: 32 }}>
         <Box p={{ base: 2, lg: 10 }}>
-          {/* <CardHeader >
-                        <Heading size='lg'>
-                            National Identity Card Registration
-                        </Heading>
-                    </CardHeader>
-                    <Divider /> */}
 
           <CardBody>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onUpdate)} >
               <Stack divider={<StackDivider />} spacing="10" mb={20}>
                 <Stack spacing={5}>
                   <Heading size={"md"} pb={8}>
                     <b>Applicant Main Data</b>
                   </Heading>
 
-
-                  <FormControl isRequired>
+                  <FormControl>
                     <FormLabel>Face Image</FormLabel>
                     <div>
-                      {selectedImage && (
+                      {imageData && (
                         <div>
                           <img
                             alt="not found"
                             width={"250px"}
-                            src={URL.createObjectURL(selectedImage)}
+                            src={`data:image/png;base64,${imageData}`}
                           />
                           <br />
-                          <button
-                            onClick={() => {
-                              setSelectedImage();
-                              setImageData();
-                              imageUploadField.current.value = "";
-                            }}
-                          >
-                            Remove
-                          </button>
+
                         </div>
                       )}
 
@@ -177,8 +145,6 @@ export default function RegisterNID() {
                               )}`
                             );
                             event.target.value = "";
-                            setSelectedImage();
-                            setImageData();
                             return;
                           }
                           if (selectedImage.size > 5e5) {
@@ -186,8 +152,6 @@ export default function RegisterNID() {
                               "Image size is too big!. Please upload a image smaller than 500 Kb"
                             );
                             event.target.value = "";
-                            setSelectedImage();
-                            setImageData();
                             return;
                           }
                           let reader = new FileReader();
@@ -195,13 +159,13 @@ export default function RegisterNID() {
                           reader.onload = function () {
                             setImageData(reader.result.split(",")[1]);
                             console.log(reader.result.split(",")[1]);
-                            setSelectedImage(selectedImage);
                           };
-                          console.log(selectedImage);
                         }}
                       />
                     </div>
                   </FormControl>
+
+
 
 
                   <Grid templateColumns="repeat(2, 1fr)" gap={6}>
@@ -213,10 +177,7 @@ export default function RegisterNID() {
                     >
                       <FormControl isRequired>
                         <FormLabel>National Identity Number</FormLabel>
-                        <Input
-                          {...register("NIN")}
-                          placeholder="National Identity Number"
-                        />
+                        <Text>{initialData.NIN}</Text>
                       </FormControl>
                     </GridItem>
 
@@ -334,7 +295,6 @@ export default function RegisterNID() {
                   <Heading size={"md"} pb={8}>
                     <b>Additional Information</b>
                   </Heading>
-
                   <Grid templateColumns="repeat(2, 1fr)" gap={6}>
                     <GridItem
                       colSpan={{
@@ -368,6 +328,7 @@ export default function RegisterNID() {
                       </FormControl>
                     </GridItem>
                   </Grid>
+
                   <Grid templateColumns="repeat(2, 1fr)" gap={6}>
                     <GridItem
                       colSpan={{
@@ -1264,7 +1225,7 @@ export default function RegisterNID() {
                         lg: 1,
                       }}
                     >
-                      <FormControl>
+                      <FormControl >
                         <FormLabel>First name</FormLabel>
                         <Input
                           {...register("spouse_first_name")}
@@ -1294,7 +1255,7 @@ export default function RegisterNID() {
                         lg: 1,
                       }}
                     >
-                      <FormControl>
+                      <FormControl >
                         <FormLabel>Last Name</FormLabel>
                         <Input
                           {...register("spouse_last_name")}
@@ -1368,7 +1329,7 @@ export default function RegisterNID() {
                         lg: 1,
                       }}
                     >
-                      <FormControl >
+                      <FormControl>
                         <FormLabel>Nationality</FormLabel>
                         <Input
                           {...register("spouse_nationality")}
@@ -1380,15 +1341,16 @@ export default function RegisterNID() {
                 </Stack>
               </Stack>
               <Button
+
                 type="submit"
                 isLoading={isLoading}
                 width={"100%"}
                 backgroundColor={"#0a81ff"}
                 color={"white"}
-                loadingText="Submitting..."
+                loadingText="Updating..."
                 colorScheme="messenger"
               >
-                Submit
+                Update
               </Button>
 
             </form>

@@ -162,7 +162,7 @@ export default function RegisterCTZ() {
                                                 lg: 1,
                                             }}
                                         >
-                                             <FormControl isRequired>
+                                            <FormControl isRequired>
                                                 <FormLabel>Citizenship Certificate Number</FormLabel>
                                                 <Input
                                                     {...register("CTZ_CCN")}
@@ -201,7 +201,7 @@ export default function RegisterCTZ() {
                                                 />
                                             </FormControl>
                                         </GridItem>
-                                        
+
                                     </Grid>
 
                                     <Grid templateColumns="repeat(2, 1fr)" gap={6}>
@@ -233,7 +233,7 @@ export default function RegisterCTZ() {
                                                 />
                                             </FormControl>
                                         </GridItem>
-                                        
+
                                     </Grid>
 
 
@@ -266,7 +266,7 @@ export default function RegisterCTZ() {
                                                 />
                                             </FormControl>
                                         </GridItem>
-                                        
+
                                     </Grid>
 
                                     <Grid templateColumns="repeat(2, 1fr)" gap={6}>
@@ -279,10 +279,10 @@ export default function RegisterCTZ() {
                                             <FormControl isRequired>
                                                 <FormLabel>Date of Issue</FormLabel>
                                                 <Input
-                                            
-                                               
-                                                size="md"
-                                                type="date"
+
+
+                                                    size="md"
+                                                    type="date"
                                                     {...register("CTZ_date_of_issue ")}
                                                     placeholder="Date of Issue"
                                                 />
@@ -302,7 +302,7 @@ export default function RegisterCTZ() {
                                                 />
                                             </FormControl>
                                         </GridItem>
-                                        
+
                                     </Grid>
                                 </Stack>
 
@@ -402,7 +402,7 @@ export default function RegisterCTZ() {
                                             </FormControl>
                                         </GridItem>
                                     </Grid> */}
-                                   
+
                                 </Stack>
 
                                 <Stack spacing={5}>
@@ -455,11 +455,11 @@ export default function RegisterCTZ() {
                                             </FormControl>
                                         </GridItem>
                                     </Grid>
-                                   
-                                   
+
+
                                 </Stack>
 
-                                
+
 
                                 <Stack spacing={5}>
                                     <Heading size={'md'} pb={8}>
@@ -511,7 +511,7 @@ export default function RegisterCTZ() {
                                             </FormControl>
                                         </GridItem>
                                     </Grid>
-                                   
+
                                 </Stack>
 
                             </Stack>
