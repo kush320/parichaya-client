@@ -192,24 +192,25 @@ export default function RegisterDVL() {
                           placeholder="Categories"
                         > */}
                         <CheckboxGroup colorScheme="green">
-                          <Stack spacing={[1, 5]} direction={["column"]}>
-                            <Checkbox value="A">A</Checkbox>
-                            <Checkbox value="B">B</Checkbox>
-                            <Checkbox value="kakashi">Kakashi</Checkbox>
-                            <Checkbox value="ok">ok</Checkbox>
-
-                            {/* <option value="A">A</option>
-                          <option value="B">B</option>
-                          <option value="C">C</option>
-                          <option value="D">D</option>
-                          <option value="E">E</option>
-                          <option value="F">F</option>
-                          <option value="H">H</option>
-                          <option value="K">K</option>
-                          <option value="P">P</option> */}
+                          <Stack spacing={[1]} direction={["row", "column"]}>
+                            <Box>
+                              <Stack spacing={[12]} direction={["row"]}>
+                                <Checkbox value="A">A</Checkbox>
+                                <Checkbox value="B">B</Checkbox>
+                                <Checkbox value="C">C</Checkbox>
+                                <Checkbox value="E">E</Checkbox>
+                              </Stack>
+                            </Box>
+                            <Box>
+                              <Stack spacing={[12]} direction={["row"]}>
+                                <Checkbox value="F">F</Checkbox>
+                                <Checkbox value="H">H</Checkbox>
+                                <Checkbox value="K">K</Checkbox>
+                                <Checkbox value="P">P</Checkbox>
+                              </Stack>
+                            </Box>
                           </Stack>
                         </CheckboxGroup>
-                        {/* </Select> */}
                       </FormControl>
                     </GridItem>
                   </Grid>
