@@ -16,6 +16,7 @@ import {
   GridItem,
   Checkbox,
   CheckboxGroup,
+  Text,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
@@ -97,10 +98,8 @@ export default function EditDVL({ nin, initialData }) {
                     >
                       <FormControl isRequired>
                         <FormLabel>National Identity Number</FormLabel>
-                        <Input
-                          {...register("NIN")}
-                          placeholder="National Identity Number"
-                        />
+                        <Text>{initialData.NIN}</Text>
+
                       </FormControl>
                     </GridItem>
 
@@ -128,11 +127,12 @@ export default function EditDVL({ nin, initialData }) {
                         lg: 1,
                       }}
                     >
+
                       <FormControl isRequired>
                         <FormLabel>Blood Group</FormLabel>
                         <Select
                           {...register("DVL_blood_group")}
-                          placeholder="Blood Group"
+                          placeholder="Select Blood Group"
                         >
                           <option value="A+">A+</option>
                           <option value="A-">A-</option>
@@ -152,19 +152,27 @@ export default function EditDVL({ nin, initialData }) {
                         lg: 1,
                       }}
                     >
-                      <FormControl isRequired>
+                      <FormControl>
                         <FormLabel>Categories</FormLabel>
 
-                        <CheckboxGroup colorScheme="green">
-                          <Stack spacing={[1, 5]} direction={["column"]}>
-                            <Checkbox value="A">A</Checkbox>
-                            <Checkbox value="B">B</Checkbox>
-                            <Checkbox value="kakashi">Kakashi</Checkbox>
-                            <Checkbox value="ok">ok</Checkbox>
-
-                          </Stack>
-                        </CheckboxGroup>
-                        {/* </Select> */}
+                        <Stack spacing={[1]} direction={["row", "column"]}>
+                          <Box>
+                            <Stack spacing={[12]} direction={["row"]}>
+                              <Checkbox {...register("DVL_categories")} isChecked={initialData.DVL_categories.includes('A')} value="A" >A</Checkbox>
+                              <Checkbox {...register("DVL_categories")} value="B">B</Checkbox>
+                              <Checkbox {...register("DVL_categories")} value="C">C</Checkbox>
+                              <Checkbox {...register("DVL_categories")} value="E">E</Checkbox>
+                            </Stack>
+                          </Box>
+                          <Box>
+                            <Stack spacing={[12]} direction={["row"]}>
+                              <Checkbox  {...register("DVL_categories")} value="F">F</Checkbox>
+                              <Checkbox  {...register("DVL_categories")} value="H">H</Checkbox>
+                              <Checkbox  {...register("DVL_categories")} value="K">K</Checkbox>
+                              <Checkbox  {...register("DVL_categories")} value="P">P</Checkbox>
+                            </Stack>
+                          </Box>
+                        </Stack>
                       </FormControl>
                     </GridItem>
                   </Grid>
@@ -197,6 +205,7 @@ export default function EditDVL({ nin, initialData }) {
                         <Input
                           size="md"
                           type="date"
+                          // {...register("DVL_date_of_expiry")}
                           {...register("DVL_date_of_expiry")}
                           placeholder="Date of Expiry"
                         />
@@ -228,7 +237,7 @@ export default function EditDVL({ nin, initialData }) {
             </form>
           </CardBody>
         </Box>
-      </Card>
-    </Box>
+      </Card >
+    </Box >
   );
 }

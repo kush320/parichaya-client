@@ -1,6 +1,6 @@
 import { useState, useContext, useRef } from "react";
+import axios from "axios";
 import {
-  Container,
   FormLabel,
   FormControl,
   Input,
@@ -12,24 +12,18 @@ import {
   NumberDecrementStepper,
   Box,
   InputGroup,
-  InputLeftAddon,
   Card,
   CardBody,
-  CardHeader,
   Heading,
-  Text,
   Stack,
   StackDivider,
-  Divider,
+  Grid,
+  GridItem,
+  Button,
+  useToast,
 } from "@chakra-ui/react";
-import axios from "axios";
-
-import { Grid, GridItem } from "@chakra-ui/react";
-import { Button, ButtonGroup } from "@chakra-ui/react";
-import { useToast } from "@chakra-ui/react";
 
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
 
 // import axios from "axios";
 import AuthContext from "../store/auth-context";
@@ -37,15 +31,7 @@ import AuthContext from "../store/auth-context";
 export default function RegisterNID() {
   const authContext = useContext(AuthContext);
   const toast = useToast();
-
-  const navigate = useNavigate("");
   const [isLoading, setIsLoading] = useState(false);
-  const [submissionError, setSubmissionError] = useState();
-  //   useEffect(() => {
-  //     if (!localStorage.getItem("token")) {
-  //       navigate("/");
-  //     }
-  //   }, []);
 
   const {
     register,
@@ -93,7 +79,6 @@ export default function RegisterNID() {
       console.log(response.data);
     } catch (error) {
       console.log(error);
-      setSubmissionError("Failed to register.");
       toast({
         title: "Registration Failed.",
         description: `Failed to register the National Identity Card.`,
@@ -114,12 +99,6 @@ export default function RegisterNID() {
       </Box>
       <Card mx={{ base: 10, lg: 32 }}>
         <Box p={{ base: 2, lg: 10 }}>
-          {/* <CardHeader >
-                        <Heading size='lg'>
-                            National Identity Card Registration
-                        </Heading>
-                    </CardHeader>
-                    <Divider /> */}
 
           <CardBody>
 

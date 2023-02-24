@@ -107,7 +107,7 @@ export default function Dashboard() {
               <GridItem
                 colSpan={{
                   base: 6,
-                  lg: 3,
+                  xl: 3,
                 }}
               >
 
@@ -128,7 +128,7 @@ export default function Dashboard() {
               <GridItem
                 colSpan={{
                   base: 6,
-                  lg: 2,
+                  xl: 2,
                 }}
               >
                 <Select value={selectedDocument} onChange={e => { setSelectedDocument(e.target.value) }}>
@@ -140,7 +140,7 @@ export default function Dashboard() {
               <GridItem
                 colSpan={{
                   base: 6,
-                  lg: 1,
+                  xl: 1,
                 }}
               >
 
