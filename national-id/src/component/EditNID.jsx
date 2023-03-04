@@ -28,7 +28,7 @@ import { useForm } from "react-hook-form";
 
 import AuthContext from "../store/auth-context";
 
-export default function EditNID({ nin, initialData }) {
+export default function EditNID({ NIN, initialData }) {
   const authContext = useContext(AuthContext);
   const toast = useToast();
 
@@ -54,9 +54,9 @@ export default function EditNID({ nin, initialData }) {
 
     try {
       const response = await axios.put(
-        `http://65.109.161.97:3000/nid/${nin}`,
+        `http://65.109.161.97:3000/nid/${NIN}`,
         {
-          NIN: nin,
+          NIN: NIN,
           documentDetails: modifiedData,
         },
         {

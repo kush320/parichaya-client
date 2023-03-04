@@ -23,6 +23,7 @@ import { Search2Icon } from '@chakra-ui/icons'
 import AuthContext from "../store/auth-context";
 import EditNID from "./EditNID";
 import EditDVL from "./EditDVL";
+import EditCTZ from "./EditCTZ";
 
 export default function Dashboard() {
   const authContext = useContext(AuthContext);
@@ -169,13 +170,13 @@ export default function Dashboard() {
         </CardBody>
       </Card>
       {searchResult && searchResult.docType === "NID" &&
-        <EditNID nin={searchQuery} initialData={searchResult} />
+        <EditNID NIN={searchQuery} initialData={searchResult} />
       }
       {searchResult && searchResult.docType === "CTZ" &&
-        <Text>Showing CTZ</Text>
+        <EditCTZ NIN={searchQuery} initialData={searchResult} />
       }
       {searchResult && searchResult.docType === "DVL" &&
-        <EditDVL nin={searchQuery} initialData={searchResult} />
+        <EditDVL NIN={searchQuery} initialData={searchResult} />
       }
 
     </Box>

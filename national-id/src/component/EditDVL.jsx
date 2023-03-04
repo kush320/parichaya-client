@@ -21,8 +21,9 @@ import {
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import AuthContext from "../store/auth-context";
+import DVLForm from "./DVLForm";
 
-export default function EditDVL({ nin, initialData }) {
+export default function EditDVL({ NIN, initialData }) {
   const authContext = useContext(AuthContext);
   const toast = useToast();
   const [isLoading, setIsLoading] = useState(false);
@@ -42,9 +43,9 @@ export default function EditDVL({ nin, initialData }) {
 
     try {
       const response = await axios.put(
-        `http://65.109.161.97:3000/dvl/${nin}`,
+        `http://65.109.161.97:3000/dvl/${NIN}`,
         {
-          NIN: nin,
+          NIN: NIN,
           documentDetails: modifiedData,
         },
         {
@@ -79,11 +80,20 @@ export default function EditDVL({ nin, initialData }) {
   }
 
   return (
-    <Box>
-      <Box px={{ base: 10, lg: 32 }} my={10}>
-        <Heading size="lg">Driving License Registration</Heading>
-      </Box>
-      <Card mx={{ base: 10, lg: 32 }}>
+    <Box pt={10}>
+      <DVLForm
+        register={register}
+        face_image={initialData.face_image}
+        full_name={initialData.first_name + " " + initialData.last_name}
+        NIN={initialData.NIN}
+        onSubmit={handleSubmit(onUpdate)}
+        buttonText='Update'
+        isLoading={isLoading}
+        buttonLoadingText='Updating...'
+      />
+
+
+      {/* <Card mx={{ base: 10, lg: 32 }}>
         <Box p={{ base: 2, lg: 10 }}>
           <CardBody>
             <form onSubmit={handleSubmit(onUpdate)}>
@@ -237,7 +247,7 @@ export default function EditDVL({ nin, initialData }) {
             </form>
           </CardBody>
         </Box>
-      </Card >
+      </Card > */}
     </Box >
   );
 }
