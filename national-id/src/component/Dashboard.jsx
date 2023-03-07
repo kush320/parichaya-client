@@ -27,7 +27,7 @@ import EditCTZ from "./EditCTZ";
 
 export default function Dashboard() {
   const authContext = useContext(AuthContext);
-  const toast = useToast()
+  const toast = useToast();
   const [selectedDocument, setSelectedDocument] = useState("nid");
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -69,9 +69,11 @@ export default function Dashboard() {
       return;
     }
     setIsLoading(true)
+    setSearchResult(null);
     try {
       const response = await axios.get(`http://65.109.161.97:3000/${selectedDocument}/check/${searchQuery}`);
       console.log(response.data)
+
       fetchDocument(selectedDocument, searchQuery);
 
     }
@@ -178,7 +180,6 @@ export default function Dashboard() {
       {searchResult && searchResult.docType === "DVL" &&
         <EditDVL NIN={searchQuery} initialData={searchResult} />
       }
-
     </Box>
   );
 }
