@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom"
 // import w3cwebsocket from 'websocket';
 import NICLogo from '../assets/images/NIC_logo.png';
-import { ReactComponent as FingerPrintSVG } from '../assets/svg/fingerprint.svg';
+import { ReactComponent as LogoSVG } from '../assets/svg/logo_white.svg';
 
 export default function ApplyScreen() {
 
@@ -50,8 +50,8 @@ export default function ApplyScreen() {
                   color={'white'}
                   mt={2}
                 >
-                  <Box mx={2}>
-                    <FingerPrintSVG />
+                  <Box mx={0}>
+                    <LogoSVG width={35} />
                   </Box>
                   Apply with Parichaya
                 </Button>
